@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.github",
+    "allauth.socialaccount.providers.google",
 
     # Rest Framework + Auth
     "rest_framework",
@@ -216,7 +217,6 @@ REST_FRAMEWORK = {
 #     'ROTATE_REFRESH_TOKENS': True,
 #     'BLACKLIST_AFTER_ROTATION': True,
 # }
-
 SOCIALACCOUNT_PROVIDERS = {
     "github": {
         "APP": {
@@ -224,5 +224,14 @@ SOCIALACCOUNT_PROVIDERS = {
             "secret": "d6195f5f19a3d2c9a1606bd990fee25747eb4062",
             "key": ""
         }
+    },
+    "google": {
+        "APP": {
+            "client_id": os.environ.get("GOOGLE_CLIENT_ID"),
+            "secret": os.environ.get("GOOGLE_CLIENT_SECRET"),
+            "key": ""
+        },
+        "SCOPE": ["profile", "email"],
+        "AUTH_PARAMS": {"access_type": "online"},
     }
 }
