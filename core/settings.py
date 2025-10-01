@@ -220,7 +220,7 @@ REST_FRAMEWORK = {
 SOCIALACCOUNT_PROVIDERS = {
     "github": {
         "APP": {
-            "client_id": "Ov23lim5pgbxBy9Gh9fH",
+            "client_id":"Ov23lim5pgbxBy9Gh9fH",
             "secret": "d6195f5f19a3d2c9a1606bd990fee25747eb4062",
             "key": ""
         }
@@ -235,3 +235,20 @@ SOCIALACCOUNT_PROVIDERS = {
         "AUTH_PARAMS": {"access_type": "online"},
     }
 }
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",  
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+CELERY_BROKER_URL = "redis://localhost:6379/0"
+CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
+
+# redis
+REDIS_PORT = 6379
+REDIS_HOST = 'localhost'
