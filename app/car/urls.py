@@ -1,12 +1,8 @@
 from rest_framework.routers import DefaultRouter
-from app.car.views import CArViewsetsAPI
+from app.car.views import CarViewsetsAPI, CarNotificationViewset  # ✅ правильное имя
 
 router = DefaultRouter()
-router.register('car', CArViewsetsAPI, basename='car')
+router.register('car', CarViewsetsAPI, basename='car')
+router.register('car-notification', CarNotificationViewset, basename='notification')
 
-urlpatterns = [
-    
-]
-
-urlpatterns += router.urls
-
+urlpatterns = router.urls  # можно сразу присвоить router.urls
